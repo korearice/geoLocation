@@ -110,12 +110,12 @@ var ipInfo = function(callback){
  */
 var nativeGeoLocationCallback = {
     onSuccess : function(position){
-        $('.service_maxmind .geo_location').text(position.coords.latitude + ' / ' + position.coords.longitude);
+        $('.service_native .geo_location').text(position.coords.latitude + ' / ' + position.coords.longitude);
         getCurrentAddress({
             query : position.coords.longitude + ',' + position.coords.latitude,
             callback : function(mapData){
-                $('.service_maxmind .city').text(mapData.result.items[0].addrdetail.sido);
-                $('.service_maxmind .address').text(mapData.result.items[0].address);
+                $('.service_native .city').text(mapData.result.items[0].addrdetail.sido);
+                $('.service_native .address').text(mapData.result.items[0].address);
             }
         });
     },
