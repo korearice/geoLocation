@@ -31,10 +31,15 @@ var nativeGeoLocationCallback = {
 		$('body').append(JSON.stringify(error, undefined, 4));
 		console.log(error);
 		console.log("Error:\n\n" + JSON.stringify(error, undefined, 4));
+	},
+	option : {
+		timeout:30000,
+		enableHighAccuracy:true,
+		maximumAge:5000
 	}
 }
 var getGeoLocation = function(callback){
-	navigator.geolocation.getCurrentPosition(callback.onSuccess, callback.onError);
+	navigator.geolocation.getCurrentPosition(callback.onSuccess, callback.onError, callback.option);
 };
 
 /**
