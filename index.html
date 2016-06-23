@@ -7,14 +7,15 @@
 </head>
 <body>
 
-<div class="service_native">
+<div class="service_baidu">
 	<h1>Baidu geoLocation</h1>
 	<ul>
 		<li><strong>위도/경도 :</strong> <span class="geo_location"></span></li>
 		<li><strong>도시 :</strong> <span class="city"></span></li>
-		<li><strong>주소</strong> <span class="address"></span></li>
+		<li><strong>주소 :</strong> <span class="address"></span></li>
+		<li><strong>전체 :</strong> <span class="all"></span></li>
 	</ul>
-	<button class="btn_apply">적용</button>
+	<button class="btn_apply">확인</button>
 </div>
 <hr>
 
@@ -38,11 +39,12 @@ var getCurrentAddress = function(callback){
 /**
  * @description : bind event
  */
-$('.service_native .btn_apply').on('click', function(){
+$('.service_baidu .btn_apply').on('click', function(){
 	getCurrentAddress(function(result){
-		$('.service_native .geo_location').append(result.content.point.x + ', ' + result.content.point.y);
-		$('.service_native .city').append(result.content.address);
-		$('body').append(JSON.stringify(result));
+		$('.service_baidu .geo_location').text(result.content.point.x + ', ' + result.content.point.y);
+		$('.service_baidu .city').text(result.content.address_detail.city);
+		$('.service_baidu .address').text(result.address);
+		$('.service_baidu .all').text(JSON.stringify(result));
 	});
 });
 </script>
